@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: 'Back '
+    uniqueID: 1008498291
+    locked: 0
+  - name: Middle
+    uniqueID: 1652104717
+    locked: 0
+  - name: Front
+    uniqueID: 4230274723
+    locked: 0
