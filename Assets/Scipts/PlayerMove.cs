@@ -1,0 +1,18 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerMove : MonoBehaviour
+{
+    public Rigidbody2D rb;
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.A))
+        {
+            rb.velocity = new Vector2(-5, 0);
+        }
+                
+              
+    }
+}
