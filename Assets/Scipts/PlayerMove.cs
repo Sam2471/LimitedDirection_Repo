@@ -10,9 +10,17 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            rb.velocity = new Vector2(-5, 0);
+            rb.velocity = new Vector2(-5, rb.velocity.y);
         }
-                
-              
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            rb.velocity = new Vector2(5, rb.velocity.y);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 30f);
+        }
     }
 }
