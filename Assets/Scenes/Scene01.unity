@@ -57109,7 +57109,7 @@ GameObject:
   - component: {fileID: 976258575}
   - component: {fileID: 976258577}
   - component: {fileID: 976258578}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -57240,6 +57240,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 976258575}
+  colid: {fileID: 976258576}
+  ground:
+    serializedVersion: 2
+    m_Bits: 256
+  anim: {fileID: 976258578}
+  candd: 0
 --- !u!95 &976258578
 Animator:
   serializedVersion: 3
@@ -57318,7 +57324,7 @@ GameObject:
   - component: {fileID: 2096436380}
   - component: {fileID: 2096436382}
   - component: {fileID: 2096436381}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
