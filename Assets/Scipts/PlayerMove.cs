@@ -11,12 +11,14 @@ public class PlayerMove : MonoBehaviour
 
 
     public bool candd = false;
-
+    public int pos = 1;
+    //FSM
     private enum State {idle, running, jumping, falling, djump}
     State state = State.idle;
 
     private void Start()
     {
+        // Automated conponent stuff
         rb = GetComponent<Rigidbody2D>();
         colid = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
@@ -24,6 +26,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+        //General Movment 
         float hdirection = (Input.GetAxis("Horizontal"));
 
         if (hdirection < 0)
@@ -44,12 +47,43 @@ public class PlayerMove : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, 45f);
             state = State.jumping;
+            pos = 1;
         }
-
+        
+        if (Input.GetButtonDown("Jump") && candd == true)
+        {
+            state = State.djump;
+            candd = false;
+            pos = 2;
+            
+            rb.velocity = new Vector2(rb.velocity.x, 45f);
+                    
+        }
+                    
+        if (state == State.falling && pos == 1)
+        {
+            candd = true;
+            
+        }
+        else if (pos == 2) 
+        {
+            wait();
+            
+           
+        }
+        // Other Functions 
         StateSwitch();
         anim.SetInteger("state", (int)state);
     }
 
+    IEnumerator wait()
+    {
+        candd = false;
+        pos = 1;
+        yield return new WaitForSeconds(2); 
+    }
+
+    // FSM Process
     private void StateSwitch()
     {
         if (state == State.jumping)
@@ -57,21 +91,22 @@ public class PlayerMove : MonoBehaviour
             if (rb.velocity.y < .1f)
             {
                 state = State.falling;
+                candd = true; 
             }
         }
         else if (state == State.falling)
         {
-            if (colid.IsTouchingLayers(ground))
+            if (colid.IsTouchingLayers(ground) && state != State.djump)
             {
                 state = State.idle;
             }
         }
-        else if (Mathf.Abs(rb.velocity.x) > 1f)
+        else if (Mathf.Abs(rb.velocity.x) > 1f && state != State.djump)
         {
             state = State.running;
         }
 
-        else
+        else if (colid.IsTouchingLayers(ground)) 
         {
             state = State.idle;
         }
