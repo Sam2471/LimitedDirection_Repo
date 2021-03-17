@@ -42,7 +42,7 @@ public class PlayerMove : MonoBehaviour
             rb.transform.localScale = new Vector3(1, 1, 1);
 
         }
-
+        // Jump
         if (Input.GetButtonDown("Jump") && colid.IsTouchingLayers(ground))
         {
             rb.velocity = new Vector2(rb.velocity.x, 45f);
@@ -50,6 +50,7 @@ public class PlayerMove : MonoBehaviour
             pos = 1;
         }
         
+        //Double Jump
         if (Input.GetButtonDown("Jump") && candd == true)
         {
             state = State.djump;
@@ -68,9 +69,8 @@ public class PlayerMove : MonoBehaviour
         else if (pos == 2) 
         {
             wait();
-            
-           
         }
+
         // Other Functions 
         StateSwitch();
         anim.SetInteger("state", (int)state);
@@ -83,7 +83,7 @@ public class PlayerMove : MonoBehaviour
         yield return new WaitForSeconds(2); 
     }
 
-    // FSM Process
+    // FSM Switch Anims Process
     private void StateSwitch()
     {
         if (state == State.jumping)
