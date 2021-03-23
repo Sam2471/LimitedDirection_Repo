@@ -11,6 +11,7 @@ public class PlayerMove : MonoBehaviour
 
 
     public bool candd = false;
+    public bool istouch;
     public int pos = 1;
     //FSM
     private enum State {idle, running, jumping, falling, djump}
@@ -22,6 +23,7 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         colid = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
+        istouch = true;
     }
 
     private void Update()
@@ -74,6 +76,16 @@ public class PlayerMove : MonoBehaviour
         // Other Functions 
         StateSwitch();
         anim.SetInteger("state", (int)state);
+
+        // Check is touching ground
+        if (colid.IsTouchingLayers(ground))
+        {
+            istouch = true;
+        }
+        else
+        {
+            istouch = false;
+        }
     }
 
     IEnumerator wait()
@@ -101,7 +113,7 @@ public class PlayerMove : MonoBehaviour
                 state = State.idle;
             }
         }
-        else if (Mathf.Abs(rb.velocity.x) > 1f && state != State.djump)
+        else if (Mathf.Abs(rb.velocity.x) > 1f && state != State.djump && istouch == true)
         {
             state = State.running;
         }
