@@ -92,7 +92,7 @@ public class PlayerMove : MonoBehaviour
     {
         candd = false;
         pos = 1;
-        yield return new WaitForSeconds(2); 
+        yield return new WaitForSeconds(1); 
     }
 
     // FSM Switch Anims Process

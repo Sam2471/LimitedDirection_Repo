@@ -12,7 +12,7 @@ public class WinScript : MonoBehaviour
     public void Start()
     {
         playedwin = false;
-        //loadingcanvas.SetActive(false);
+        loadingcanvas.SetActive(false);
         wincanvas.SetActive(false);
     }
 
