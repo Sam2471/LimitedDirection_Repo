@@ -16,6 +16,7 @@ public class WinScript : MonoBehaviour
         wincanvas.SetActive(false);
     }
 
+    // Waiting for win text to finish
     public void Update()
     {
         if (playedwin == true)
@@ -23,6 +24,7 @@ public class WinScript : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
+    // Win trigger
     private void OnTriggerEnter2D(Collider2D collision)
     {
         rb2.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -33,7 +35,7 @@ public class WinScript : MonoBehaviour
             StartCoroutine(playwin());  
         }
     }
-
+    // Delay before moving on to next scene
     IEnumerator playwin()
     {      
         yield return new WaitForSeconds(3);

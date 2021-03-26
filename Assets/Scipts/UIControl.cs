@@ -12,7 +12,7 @@ public class UIControl : MonoBehaviour
     public Animator anim7;
 
     public bool isfading = false;
-
+    //UI Timer Not Active
     void Start()
     {
         StartCoroutine(waitthree());
@@ -23,7 +23,7 @@ public class UIControl : MonoBehaviour
         anim6.SetBool("canfade", false);
         anim7.SetBool("canfade", false);
     }
-
+    //UI Timer Active
     IEnumerator waitthree()
 
     {
