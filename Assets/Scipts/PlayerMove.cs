@@ -68,9 +68,14 @@ public class PlayerMove : MonoBehaviour
             candd = true;
             
         }
-        else if (pos == 2) 
+        else if (pos == 2)
         {
-            wait();
+            //wait();
+        }
+        if (colid.IsTouchingLayers(ground))
+        {
+            candd = false;
+            pos = 1;
         }
 
         // Other Functions 
@@ -92,7 +97,7 @@ public class PlayerMove : MonoBehaviour
     {
         candd = false;
         pos = 1;
-        yield return new WaitForSeconds(1); 
+        yield return new WaitForSeconds(0); 
     }
 
     // FSM Switch Anims Process

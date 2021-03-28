@@ -8,11 +8,16 @@ public class PlayerMoveL1 : MonoBehaviour
     [SerializeField] private Collider2D colid;
     [SerializeField] private LayerMask ground;
     [SerializeField] private Animator anim;
-
+    public AudioSource playeraudio;
+    public AudioClip jumpaudio;
+    public AudioClip hurtaudio;
+    public AudioClip spikeaudio;
 
     public bool candd = false;
     public bool istouch;
     public int pos = 1;
+
+
     //FSM
     private enum State {idle, running, jumping, falling, djump}
     State state = State.idle;
@@ -31,14 +36,14 @@ public class PlayerMoveL1 : MonoBehaviour
         //General Movment 
         float hdirection = (Input.GetAxis("Horizontal"));
 
-        if (hdirection < 0 && state == State.jumping || hdirection < 0 && state == State.falling)
+        if (hdirection < 0 && state == State.jumping || hdirection < 0 && state == State.falling || hdirection < 0 && state == State.djump)
         {
             rb.velocity = new Vector2(-10, rb.velocity.y);
             rb.transform.localScale = new Vector3(-1, 1, 1);
 
         }
 
-        else if (hdirection > 0 && state == State.jumping || hdirection > 0 && state == State.falling)
+        else if (hdirection > 0 && state == State.jumping || hdirection > 0 && state == State.falling || hdirection > 0 && state == State.djump)
         {
             rb.velocity = new Vector2(10, rb.velocity.y);
             rb.transform.localScale = new Vector3(1, 1, 1);
@@ -71,6 +76,12 @@ public class PlayerMoveL1 : MonoBehaviour
         else if (pos == 2) 
         {
            //wait();
+        }
+
+        if (colid.IsTouchingLayers(ground))
+        {
+            candd = false;
+            pos = 1;
         }
 
         // Other Functions 
