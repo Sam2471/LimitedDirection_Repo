@@ -8,7 +8,10 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Collider2D colid;
     [SerializeField] private LayerMask ground;
     [SerializeField] private Animator anim;
-
+    public AudioSource playeraudio;
+    public AudioClip jumpaudio;
+    public AudioClip hurtaudio;
+    public AudioClip spikeaudio;
 
     public bool candd = false;
     public bool istouch;
@@ -47,6 +50,7 @@ public class PlayerMove : MonoBehaviour
         // Jump
         if (Input.GetButtonDown("Jump") && colid.IsTouchingLayers(ground))
         {
+            playeraudio.PlayOneShot(jumpaudio); 
             rb.velocity = new Vector2(rb.velocity.x, 45f);
             state = State.jumping;
             pos = 1;
@@ -55,6 +59,7 @@ public class PlayerMove : MonoBehaviour
         //Double Jump
         if (Input.GetButtonDown("Jump") && candd == true)
         {
+            playeraudio.PlayOneShot(jumpaudio);
             state = State.djump;
             candd = false;
             pos = 2;

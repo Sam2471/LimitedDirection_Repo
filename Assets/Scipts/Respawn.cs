@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class Respawn : MonoBehaviour
 {
     public GameObject player;
+    public AudioSource respawnsource;
+    public AudioClip hurtaudio;
 
     public Scene scene;
 
@@ -18,6 +21,7 @@ public class Respawn : MonoBehaviour
     {
         if (collision.tag == ("Player"))
         {
+            respawnsource.PlayOneShot(hurtaudio);
             SceneManager.LoadScene(scene.name);
         }
         
@@ -27,7 +31,9 @@ public class Respawn : MonoBehaviour
     {
         if (Input.GetButtonDown("Respwan"))
         {
+            respawnsource.PlayOneShot(hurtaudio);
             SceneManager.LoadScene(scene.name);
+
         }
     }
 }

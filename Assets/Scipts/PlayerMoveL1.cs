@@ -52,6 +52,7 @@ public class PlayerMoveL1 : MonoBehaviour
         // Jump
         if (Input.GetButtonDown("Jump") && colid.IsTouchingLayers(ground))
         {
+            playeraudio.PlayOneShot(jumpaudio);
             rb.velocity = new Vector2(rb.velocity.x, 45f);
             state = State.jumping;
             pos = 1;
@@ -60,6 +61,7 @@ public class PlayerMoveL1 : MonoBehaviour
         //Double Jump
         if (Input.GetButtonDown("Jump") && candd == true)
         {
+            playeraudio.PlayOneShot(jumpaudio);
             state = State.djump;
             candd = false;
             pos = 2;
