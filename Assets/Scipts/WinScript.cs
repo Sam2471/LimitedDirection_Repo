@@ -8,6 +8,8 @@ public class WinScript : MonoBehaviour
     public Rigidbody2D rb2;
     public GameObject loadingcanvas;
     public GameObject wincanvas;
+    public AudioSource winsource;
+    public AudioClip winaudio;
 
     public void Start()
     {
@@ -29,6 +31,7 @@ public class WinScript : MonoBehaviour
     {
         rb2.constraints = RigidbodyConstraints2D.FreezeAll;
         wincanvas.SetActive(true);
+        winsource.PlayOneShot(winaudio);
 
         if (collision.gameObject.tag == ("Player"))
         {
