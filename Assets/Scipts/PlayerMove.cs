@@ -73,10 +73,7 @@ public class PlayerMove : MonoBehaviour
             candd = true;
             
         }
-        else if (pos == 2)
-        {
-            //wait();
-        }
+       
         if (colid.IsTouchingLayers(ground))
         {
             candd = false;

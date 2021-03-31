@@ -13,13 +13,13 @@ public class PlayerMoveL1 : MonoBehaviour
     public AudioClip hurtaudio;
     public AudioClip spikeaudio;
 
-    public bool candd = false;
+    public bool candoublejump = false;
     public bool istouch;
     public int pos = 1;
 
 
     //FSM
-    private enum State {idle, running, jumping, falling, djump}
+    private enum State { idle, running, jumping, falling, djump }
     State state = State.idle;
 
     private void Start()
@@ -36,18 +36,21 @@ public class PlayerMoveL1 : MonoBehaviour
         //General Movment 
         float hdirection = (Input.GetAxis("Horizontal"));
 
-        if (hdirection < 0 && state == State.jumping || hdirection < 0 && state == State.falling || hdirection < 0 && state == State.djump)
+        var stateFalling = state == State.falling;
+
+
+        if (state == State.jumping || stateFalling || state == State.djump)
         {
-            rb.velocity = new Vector2(-10, rb.velocity.y);
-            rb.transform.localScale = new Vector3(-1, 1, 1);
-
-        }
-
-        else if (hdirection > 0 && state == State.jumping || hdirection > 0 && state == State.falling || hdirection > 0 && state == State.djump)
-        {
-            rb.velocity = new Vector2(10, rb.velocity.y);
-            rb.transform.localScale = new Vector3(1, 1, 1);
-
+            if (hdirection < 0)
+            {
+                rb.velocity = new Vector2(-10, rb.velocity.y);
+                rb.transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else if (hdirection > 0)
+            {
+                rb.velocity = new Vector2(10, rb.velocity.y);
+                rb.transform.localScale = new Vector3(1, 1, 1);
+            }
         }
         // Jump
         if (Input.GetButtonDown("Jump") && colid.IsTouchingLayers(ground))
@@ -57,32 +60,29 @@ public class PlayerMoveL1 : MonoBehaviour
             state = State.jumping;
             pos = 1;
         }
-        
+
         //Double Jump
-        if (Input.GetButtonDown("Jump") && candd == true)
+        if (Input.GetButtonDown("Jump") && candoublejump == true)
         {
             playeraudio.PlayOneShot(jumpaudio);
             state = State.djump;
-            candd = false;
+            candoublejump = false;
             pos = 2;
-            
             rb.velocity = new Vector2(rb.velocity.x, 45f);
-                    
         }
-                    
+
         if (state == State.falling && pos == 1)
         {
-            candd = true;
-            
+            candoublejump = true;
         }
-        else if (pos == 2) 
+        else if (pos == 2)
         {
-           //wait();
+            //wait();
         }
 
         if (colid.IsTouchingLayers(ground))
         {
-            candd = false;
+            candoublejump = false;
             pos = 1;
         }
 
@@ -103,9 +103,9 @@ public class PlayerMoveL1 : MonoBehaviour
 
     IEnumerator wait()
     {
-        candd = false;
+        candoublejump = false;
         pos = 1;
-        yield return new WaitForSeconds(1); 
+        yield return new WaitForSeconds(1);
     }
 
     // FSM Switch Anims Process
@@ -116,7 +116,7 @@ public class PlayerMoveL1 : MonoBehaviour
             if (rb.velocity.y < .1f)
             {
                 state = State.falling;
-                candd = true; 
+                candoublejump = true;
             }
         }
         else if (state == State.falling)
@@ -130,8 +130,8 @@ public class PlayerMoveL1 : MonoBehaviour
         {
             state = State.running;
         }
-
-        else if (colid.IsTouchingLayers(ground)) 
+        
+            else if (colid.IsTouchingLayers(ground))
         {
             state = State.idle;
         }

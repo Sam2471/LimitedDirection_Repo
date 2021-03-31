@@ -618,8 +618,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3.6, y: -17.892868}
-  m_SizeDelta: {x: 314.3462, y: 56.05133}
+  m_AnchoredPosition: {x: 1.4, y: -17.8}
+  m_SizeDelta: {x: 398.32922, y: 65.86258}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &292766579
 MonoBehaviour:
@@ -653,7 +653,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Jump x 2 on fall for DD
+  m_Text: Jump x 2 on fall for Double Jump
 --- !u!222 &292766580
 CanvasRenderer:
   m_ObjectHideFlags: 0
