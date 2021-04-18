@@ -9,6 +9,9 @@ public class Movingplat : MonoBehaviour
     public Transform startpos;
     Vector3 nextpos;
 
+    public bool isonmovingplatform = false;
+    public GameObject playertwo;
+
 
     void Start()
     {
@@ -18,6 +21,15 @@ public class Movingplat : MonoBehaviour
 
     void Update()
     {
+        if (isonmovingplatform == true)
+        {
+            playertwo.transform.SetParent(this.transform);
+        }
+        else
+        {
+            playertwo.transform.SetParent(null);
+        }
+
         if (transform.position == pos1.position)
         {
             nextpos = pos2.position;
@@ -35,4 +47,18 @@ public class Movingplat : MonoBehaviour
         Gizmos.DrawLine(pos1.position, pos2.position);
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            isonmovingplatform = true;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            isonmovingplatform = false;
+        }
+    }
 }

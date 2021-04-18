@@ -68,7 +68,7 @@ public class PlayerMoveL1 : MonoBehaviour
             state = State.djump;
             candoublejump = false;
             pos = 2;
-            rb.velocity = new Vector2(rb.velocity.x, 45f);
+            rb.velocity = new Vector2(rb.velocity.x, 55f);
         }
 
         if (state == State.falling && pos == 1)
