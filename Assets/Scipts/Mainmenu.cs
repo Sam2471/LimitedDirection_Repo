@@ -12,6 +12,7 @@ public class Mainmenu : MonoBehaviour
     //Play and Quit
     public void PlayGame()
     {
+        Debug.Log("loolj");
         SceneManager.LoadScene("Scene01");
     }
     public void QuitGame()
@@ -44,15 +45,15 @@ public class Mainmenu : MonoBehaviour
         Mainbuttons.SetActive(false);
     }
     public void Levelone()
-    {
+    {  
         SceneManager.LoadScene("Scene01");
     }
     public void Leveltwo()
-    {
+    {       
         SceneManager.LoadScene("Scene02");
     }
     public void Levelthree()
-    {
+    {      
         SceneManager.LoadScene("Scene03");
     }
 }

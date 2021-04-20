@@ -19,6 +19,7 @@ public class Respawn : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.tag == ("Player"))
         {
             respawnsource.PlayOneShot(hurtaudio);
@@ -29,6 +30,7 @@ public class Respawn : MonoBehaviour
     }
     void Update()
     {
+        
         if (Input.GetButtonDown("Respwan"))
         {
             respawnsource.PlayOneShot(hurtaudio);
