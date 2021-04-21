@@ -24,6 +24,7 @@ public class Respawn : MonoBehaviour
         {
             respawnsource.PlayOneShot(hurtaudio);
             SceneManager.LoadScene(scene.name);
+            
         }
         
         
