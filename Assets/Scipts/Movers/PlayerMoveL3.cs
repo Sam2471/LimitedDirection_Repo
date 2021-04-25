@@ -36,14 +36,14 @@ public class PlayerMoveL3 : MonoBehaviour
 
         if (hdirection < 0)
         {
-            rb.velocity = new Vector2(10, rb.velocity.y);
-            rb.transform.localScale = new Vector3(-1, 1, 1);
+            //rb.velocity = new Vector2(10, rb.velocity.y);
+            //rb.transform.localScale = new Vector3(-1, 1, 1);
 
         }
 
         else if (hdirection > 0)
         {
-            rb.velocity = new Vector2(-10, rb.velocity.y);
+            rb.velocity = new Vector2(10, rb.velocity.y);
             rb.transform.localScale = new Vector3(1, 1, 1);
 
         }
