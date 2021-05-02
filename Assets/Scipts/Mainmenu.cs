@@ -12,7 +12,7 @@ public class Mainmenu : MonoBehaviour
     //Play and Quit
     public void PlayGame()
     {
-        Debug.Log("loolj");
+        //Debug.Log("loolj");
         SceneManager.LoadScene("Scene01");
     }
     public void QuitGame()
