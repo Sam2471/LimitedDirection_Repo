@@ -35,8 +35,8 @@ public class WinScript : MonoBehaviour
 
         if (collision.gameObject.tag == ("Player"))
         {
-            StartCoroutine(playwin());  
-        }
+            StartCoroutine(playwin());
+                    }
     }
     // Delay before moving on to next scene
     IEnumerator playwin()
