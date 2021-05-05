@@ -63,3 +63,6 @@ TagManager:
   - name: Real Close
     uniqueID: 2297309359
     locked: 0
+  - name: Extra close
+    uniqueID: 1349059697
+    locked: 0
