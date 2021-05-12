@@ -8,7 +8,7 @@ public class Mainmenu : MonoBehaviour
     public GameObject Levelselect;
     public GameObject Controlback;
     public GameObject Background2;
-
+  
     //Play and Quit
     public void PlayGame()
     {
@@ -27,6 +27,7 @@ public class Mainmenu : MonoBehaviour
         Mainbuttons.SetActive(true);
         Controlback.SetActive(false);
         Levelselect.SetActive(false);
+        
     }
 
     //Controls
@@ -43,6 +44,7 @@ public class Mainmenu : MonoBehaviour
         Controlback.SetActive(true);
         Levelselect.SetActive(true);
         Mainbuttons.SetActive(false);
+        
     }
     public void Levelone()
     {  

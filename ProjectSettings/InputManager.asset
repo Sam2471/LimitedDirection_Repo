@@ -102,11 +102,11 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Mouse X
+    m_Name: ppreset
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: p
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
@@ -114,9 +114,9 @@ InputManager:
     sensitivity: 0.1
     snap: 0
     invert: 0
-    type: 1
+    type: 0
     axis: 0
-    joyNum: 0
+    joyNum: 16
   - serializedVersion: 3
     m_Name: Mouse Y
     descriptiveName: 

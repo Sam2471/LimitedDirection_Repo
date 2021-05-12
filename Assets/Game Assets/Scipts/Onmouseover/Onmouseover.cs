@@ -5,6 +5,8 @@ using UnityEngine;
 public class Onmouseover : MonoBehaviour
 {
     [SerializeField]private GameObject placeholder;
+    public GameObject gemicon;
+    public GameObject gemtext;
 
     private void Start()
     {
@@ -13,12 +15,13 @@ public class Onmouseover : MonoBehaviour
 
     public void OnMouseOver()
     {
-        Debug.Log("poop6");
         placeholder.SetActive(true);
+        gemicon.SetActive(true);      
     }
 
     public void OnMouseExit()
     {
         placeholder.SetActive(false);
+        gemicon.SetActive(false);
     }
 }
