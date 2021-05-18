@@ -20,7 +20,6 @@ public class PermanentUI : MonoBehaviour
     {
         scene3 = SceneManager.GetActiveScene();
         
-
         if (!perm)
             perm = this;
 

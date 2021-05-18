@@ -17,9 +17,11 @@ public class WinScript : MonoBehaviour
     public float newscenetwotime;
     public float newscenethreetime;
 
-    public float a = 120f;
-    public float b = 120f;
-    public float c = 135f;
+    public Scene scenewin;
+
+    public float a = 130f;
+    public float b = 130f;
+    public float c = 145f;
 
     public void Start()
     {
@@ -29,6 +31,7 @@ public class WinScript : MonoBehaviour
         playedwin = false;
         loadingcanvas.SetActive(false);
         wincanvas.SetActive(false);
+        scenewin = SceneManager.GetActiveScene();
     }
 
     // Waiting for win text to finish
@@ -36,7 +39,16 @@ public class WinScript : MonoBehaviour
     {
         if (playedwin == true)
         {
+            if (scenewin.name == "Scene03")
+            {
+                SceneManager.LoadScene("Main Menu01");
+            
+            }
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        if (playedwin == true ) 
+        {
+        
         }
     }
     // Win trigger
