@@ -3,23 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class PermanentUI : MonoBehaviour
 {
+    public int score = 0;
     public int gem = 0;
     public Text gemText;
-    public float gemsave1;
-    public float gemsave2;
-    public float gemsave3;
+    public float gemsave;
 
-    public Scene scene3;
     public static PermanentUI perm;
 
     private void Start()
     {
+<<<<<<< HEAD
+        gemsave = PlayerPrefs.GetFloat("gemsave");
+
+=======
         scene3 = SceneManager.GetActiveScene();
         
+>>>>>>> 3ca8e09885bebd943d0e12394ffae0d5dc40d53f
         if (!perm)
             perm = this;
 
@@ -29,22 +31,7 @@ public class PermanentUI : MonoBehaviour
 
     void Update()
     {
-        gemsave1 = PlayerPrefs.GetFloat("gemsave1");
-        gemsave2 = PlayerPrefs.GetFloat("gemsave2");
-        gemsave3 = PlayerPrefs.GetFloat("gemsave3");
-        if (scene3.name == "Scene01")
-        {
-            PlayerPrefs.SetFloat("gemsave1", gem);
-        }
-        if (scene3.name == "Scene02")
-        {
-            PlayerPrefs.SetFloat("gemsave2", gem);
-        }
-        
-        if (scene3.name == "Scene03")
-        {
-            PlayerPrefs.SetFloat("gemsave3", gem);
-        }
+        PlayerPrefs.SetFloat("gemsave", gem);
     }
 
     public void Reset()
