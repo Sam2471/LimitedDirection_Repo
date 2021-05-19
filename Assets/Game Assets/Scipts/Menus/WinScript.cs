@@ -41,8 +41,7 @@ public class WinScript : MonoBehaviour
         {
             if (scenewin.name == "Scene03")
             {
-                SceneManager.LoadScene("Main Menu01");
-            
+                SceneManager.LoadScene("Main Menu01");            
             }
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
@@ -74,33 +73,35 @@ public class WinScript : MonoBehaviour
         yield return new WaitForSeconds(1);
         playedwin = true;     
     }
+
+    IEnumerator sounddeley()
+    {        
+        yield return new WaitForSeconds(2);
+        PermanentUI.perm.gem += 1;
+        gemsource2.PlayOneShot(gemclip2);
+        PermanentUI.perm.gemText.text = PermanentUI.perm.gem.ToString() + "/5";
+    }
     public void gemcheck() 
     {
         if (scenewin.name == "Scene01")
         {
             if (newsceneonetime <= a)
             {
-                gemsource2.PlayOneShot(gemclip2);
-                PermanentUI.perm.gem += 1;
-                PermanentUI.perm.gemText.text = PermanentUI.perm.gem.ToString() + "/5";
+                StartCoroutine(sounddeley());              
             }
         }
         if (scenewin.name == "Scene02")
         {
             if (newscenetwotime <= b)
             {
-                gemsource2.PlayOneShot(gemclip2);
-                PermanentUI.perm.gem += 1;
-                PermanentUI.perm.gemText.text = PermanentUI.perm.gem.ToString() + "/5";
+                StartCoroutine(sounddeley());
             }
         }
         if (scenewin.name == "Scene03")
         {
             if (newscenethreetime <= c)
             {
-                gemsource2.PlayOneShot(gemclip2);
-                PermanentUI.perm.gem += 1;
-                PermanentUI.perm.gemText.text = PermanentUI.perm.gem.ToString() + "/5";
+                StartCoroutine(sounddeley());
             }
         }
     }
