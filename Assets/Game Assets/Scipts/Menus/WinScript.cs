@@ -76,25 +76,33 @@ public class WinScript : MonoBehaviour
     }
     public void gemcheck() 
     {
-        if (newsceneonetime <= a)
+        if (scenewin.name == "Scene01")
         {
-            gemsource2.PlayOneShot(gemclip2);
-            PermanentUI.perm.gem += 1;
-            PermanentUI.perm.gemText.text = PermanentUI.perm.gem.ToString() + "/5";
+            if (newsceneonetime <= a)
+            {
+                gemsource2.PlayOneShot(gemclip2);
+                PermanentUI.perm.gem += 1;
+                PermanentUI.perm.gemText.text = PermanentUI.perm.gem.ToString() + "/5";
+            }
         }
-        if (newscenetwotime <= b)
+        if (scenewin.name == "Scene02")
         {
-            gemsource2.PlayOneShot(gemclip2);
-            PermanentUI.perm.gem += 1;
-            PermanentUI.perm.gemText.text = PermanentUI.perm.gem.ToString() + "/5";
+            if (newscenetwotime <= b)
+            {
+                gemsource2.PlayOneShot(gemclip2);
+                PermanentUI.perm.gem += 1;
+                PermanentUI.perm.gemText.text = PermanentUI.perm.gem.ToString() + "/5";
+            }
         }
-        if (newscenethreetime <= c)
+        if (scenewin.name == "Scene03")
         {
-            gemsource2.PlayOneShot(gemclip2);
-            PermanentUI.perm.gem += 1;
-            PermanentUI.perm.gemText.text = PermanentUI.perm.gem.ToString() + "/5";
+            if (newscenethreetime <= c)
+            {
+                gemsource2.PlayOneShot(gemclip2);
+                PermanentUI.perm.gem += 1;
+                PermanentUI.perm.gemText.text = PermanentUI.perm.gem.ToString() + "/5";
+            }
         }
-
     }
 }
 
