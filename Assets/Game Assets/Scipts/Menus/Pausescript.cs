@@ -9,6 +9,11 @@ public class Pausescript : MonoBehaviour
     public GameObject Pausemenu;
     public GameObject ControlUI;
 
+    void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
